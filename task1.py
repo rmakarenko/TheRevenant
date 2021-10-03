@@ -1,4 +1,4 @@
-def belochka(n):
+def squirrel(n):
     
     if (n == 0 or n ==1): # в случае 0 или 1 на входе сразу же вернем 1
         return 1  
