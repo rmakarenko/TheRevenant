@@ -37,12 +37,6 @@ def ConquestCampaign(n, m, l, battalion):
                     elif matrix[i][j] == 0 and (matrix[i][j + 1] == days_to_conquer or matrix[i][j - 1] == days_to_conquer):
                         matrix[i][j] = days_to_conquer + 1
                         left_to_conquer = left_to_conquer - 1
-                    elif matrix[i][j] == 0 and (matrix[i - 1][j - 1] == days_to_conquer or matrix[i - 1][j + 1] == days_to_conquer):
-                        matrix[i][j] = days_to_conquer + 1
-                        left_to_conquer = left_to_conquer - 1
-                    elif matrix[i][j] == 0 and (matrix[i + 1][j - 1] == days_to_conquer or matrix[i + 1][j + 1] == days_to_conquer):
-                        matrix[i][j] = days_to_conquer + 1
-                        left_to_conquer = left_to_conquer - 1
 
                     if (i == n) and (j == m):
                         days_to_conquer = days_to_conquer + 1
