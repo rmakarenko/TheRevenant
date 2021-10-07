@@ -19,7 +19,7 @@ def ConquestCampaign(n, m, l, battalion):
 
     # расставить единицы десанта
     for i in range(0, len(battalion), 2):
-        matrix[battalion[i] + 1][battalion[i + 1] + 1] = 1
+        matrix[battalion[i]][battalion[i + 1]] = 1
 
     # вычесть десант из left_to_conquer
     for i in range(n):
@@ -48,3 +48,4 @@ def ConquestCampaign(n, m, l, battalion):
                         days_to_conquer = days_to_conquer + 1
 
     return days_to_conquer
+
