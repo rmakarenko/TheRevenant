@@ -5,7 +5,7 @@ def IncreaseLength(t1, t2):
     if t1[0] == t2[0] or t1[1] == t2[1]:
         lengthInner = lengthInner + 1
     else:
-        lengthInner = lengthInner + 1.41421
+        lengthInner = lengthInner + 1.414213562373095
 
     return lengthInner
 
