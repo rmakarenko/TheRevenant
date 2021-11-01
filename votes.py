@@ -56,8 +56,8 @@ def MassVote(N, Votes):
 
     elif (rounded_first_percents > 50):
 
-        return "majority winner" + str(first_number)
+        return "majority winner" + ' ' + str(first_number + 1)
 
     else:
 
-        return "minority winner" + str(first_number)
+        return "minority winner" + ' ' + str(first_number + 1)
