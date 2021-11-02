@@ -30,6 +30,9 @@ def Max1Max2(Votes):
 
 def MassVote(N, Votes):
 
+    if len(Votes) == 1:
+        return "majority winner 1"
+
     total_votes = 0  # посчитаем общее количество голосов
     for i in range(N):
         total_votes = total_votes + Votes[i]
@@ -61,3 +64,5 @@ def MassVote(N, Votes):
     else:
 
         return "minority winner" + ' ' + str(first_number + 1)
+
+print(MassVote(1, [100])) ## = majority winner 1
