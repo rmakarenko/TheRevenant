@@ -20,10 +20,10 @@ def Max1Max2(Votes):
             max2 = Votes[i]
             max1i = i
             max2i = i
-        elif (Votes[i] >= max1):
+        elif (Votes[i] > max1):
             max1 = Votes[i]
             max1i = i
-        elif (Votes[i] >= max2):
+        elif (Votes[i] > max2):
             max2 = Votes[i]
             max2i = i
     return max1, max1i, max2, max2i
