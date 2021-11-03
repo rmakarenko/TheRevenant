@@ -64,5 +64,3 @@ def MassVote(N, Votes):
     else:
 
         return "minority winner" + ' ' + str(first_number + 1)
-
-print(MassVote(1, [100])) ## = majority winner 1
