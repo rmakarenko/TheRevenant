@@ -1,28 +1,24 @@
-def TrafficLigth(red, green, time):  # функция возвращает задержку, на данном светофоре
+def TrafficLigth(red, green, time):  # функция возвращает задержку на данном светофоре
     delay = 0
-    while (time > red + green):  # вычесть целое количество раз, попадающих на полный цикл смены цветов
+    while (time > red + green):  # вычесть целое количество раз, попадающих на полный цикл смены цветов (для упрощения рассчетов)
         time = time - (red + green)
     if time == 0 or time == red + green:
         delay = red
     elif time < red:
         delay = red - time
-    return delay
+    return delay + 1
 
 def Unmanned(L, N, track):
 
     time = 0  # переменная для хранения времени пути
     roadmap = []  # список будет моделировать дорогу
-    output = []
+    output = []  # в этот список запишем данные о времени движения, включая задержки на светофорах
 
     for i in range(L): # заполнить по длине дороги единицами список
         roadmap.append(0)
 
-    print(roadmap)
-
     for i in range(N):  # добавить в него данные о светофорах
         roadmap[track[i][0] - 1] = str(track[i][1]) + ' ' + str(track[i][1])
-
-    print(roadmap)
 
     for i in range(len(roadmap)):   # пройти по массиву и определить, насколько задержит каждый светофор
         if roadmap[i] == 0:
@@ -31,14 +27,12 @@ def Unmanned(L, N, track):
         else:
             red = int(roadmap[i].split(' ')[0])
             green = int(roadmap[i].split(' ')[1])
-            time = time + TrafficLigth(red, green, time)
-            output.append(TrafficLigth(red, green, time))
+            delay = TrafficLigth(red, green, time)
+            time = time + delay
+            output.append(delay)
 
-    print('итоговый аутпут выглядит так ', output)
-
+    total_time = 0  # в эту переменную запишем сумму времени движения, считав ее со списка output
     for i in range(len(output)):
-        time = time + output[i]
+        total_time = total_time + output[i]
 
     return time
-
-print(Unmanned(10, 2, [[3,5,5],[5,2,2]]))
