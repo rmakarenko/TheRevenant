@@ -18,7 +18,8 @@ def Unmanned(L, N, track):
         roadmap.append(0)
 
     for i in range(N):  # добавить в него данные о светофорах
-        roadmap[track[i][0] - 1] = str(track[i][1]) + ' ' + str(track[i][1])
+        if (track[i][0] <= L and track[i][0] > 0):
+            roadmap[track[i][0] - 1] = str(track[i][1]) + ' ' + str(track[i][1])
 
     for i in range(len(roadmap)):   # пройти по массиву и определить, насколько задержит каждый светофор
         if roadmap[i] == 0:  # это условие фиксирует отрезки без светофоров
@@ -32,3 +33,4 @@ def Unmanned(L, N, track):
             output.append(delay)
 
     return time
+    
