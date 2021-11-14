@@ -11,8 +11,7 @@ def string_to_massive(H1, W1, string):  # эта функция преврати
     total_list = []
     current_list = []
     for i in range(H1):
-        for j in range(W1):
-            current_list.append(string[j + i * W1])
+        current_list = string.split(' ')[i]
         total_list.append(current_list)
         current_list = []
     return total_list
@@ -41,5 +40,3 @@ def TankRush(H1, W1, S1, H2, W2, S2):
             return False
 
     return True
-
-
