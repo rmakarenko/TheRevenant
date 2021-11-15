@@ -1,14 +1,14 @@
 def massive_search(i, j):  # функция принимает на вход координаты карты, где располагается элемент, совпадающий с первым элементом танков
     current_list = []
     total_karta = []
-    for i in range(H2):  # создадим отдельный массив чтобы не использовать всю карту
-        for j in range(W2):
-            current_list.append(karta[i][j])
+    for k in range(i, i + H2):  # создадим отдельный массив чтобы не использовать всю карту
+        for t in range(j, j + W2):
+            current_list.append(karta[k][t])
         total_karta.append(current_list)
         current_list = []
-    for i in range(H2):
-        for j in range(W2):
-            if total_karta[i][j] != tanks[i][j]:
+    for m in range(H2):
+        for n in range(W2):
+            if total_karta[m][n] != tanks[m][n]:
                 return False
     return True
 
@@ -39,4 +39,4 @@ def TankRush(h1, w1, S1, h2, w2, S2):
             if karta[i][j] == tanks[0][0] and massive_search(i, j):  # если текущий элемент карты равен первому элементу танков то вызовем функцию, которая проверит равенство массива, лежащего за этой точкой с искомым
                 return True
     return False
-
+             
