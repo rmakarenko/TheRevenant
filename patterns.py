@@ -12,7 +12,6 @@ def CheckPatternsEquality(line_2):
     patterns_are_equal = []
     length_of_the_line = len(line_2)
     limit = length_of_the_line / 2 + 1
-    #list_of_elements = []
 
     for i in range(2, int(limit), 2):  # если длина входной строки четная то определим, насколько она делится нацело и для соответственных длин элементов произведем проверку
         patterns_are_equal = True
@@ -52,10 +51,10 @@ def LineAnalysis(line):
             without_asterix = without_asterix + line[i]
 
     for i in range(len(without_asterix)):  # в случае паттерна, в котором присутствуют только точки (в любом количестве), кроме концевых звездочек - вернем True
-        if line[i] != '.':
-            break
-        elif i == len(without_asterix) - 1 and line[len(without_asterix) - 1] == '.':
+        if i == len(without_asterix) - 1 and without_asterix[len(without_asterix) - 1] == '.':
             return True
+        elif line[i] != '.':
+            break
 
     if len(line) % 2 != 0:  # если длина входной строки нечетная то для нее должен быть свой метод, его нужно написать? или я ошибаюсь?
         line_without_last_asterix = ''
