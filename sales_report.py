@@ -1,4 +1,8 @@
 def ShopOLAP(N, items_input):
+
+    if len(items_input) == 1:
+        return items_input
+
     items = items_input
     dublicates = []
     dublicates_sales = []
@@ -14,14 +18,16 @@ def ShopOLAP(N, items_input):
     final_transformed = []
     string_sorted = []
     final_items_string = []
+    final_items = []
+    final_sales = []
+    final_together = []
 
     for i in range(N):  # пройдем по всему входному массиву и сформируем из него два массива - с наименованиями и продажами
 
         element = items[i].split(' ')
-        names.append(element[0])
+        names.append(element[0])  # now we have 2 lists - with items names and with number of sales names = [] and sales = []
         sales.append(element[1])
 
-    # now we have 2 lists - with items names and with number of sales names = [] and sales = []
     for i in range(N):  # walktrough the names and find the unique ones. remember the index, save them with sales to the separate list and then delete them from the items list
         element = names[i]
         for j in range(N):
@@ -39,15 +45,24 @@ def ShopOLAP(N, items_input):
                 unique_numbers.append(i)  # и соответствующие индексы в unique_numbers
 
     # now we have 3 more lists, filled in with the data about unique items
-    for i in range(len(names)):  # find all duplicate items in the list, save them in another lists like with the unique items
-        for j in range(len(unique)):
-            if names[i] == unique[j]:
-                break
-            elif names[i] != unique[j] and j == len(unique) - 1:
-                dublicates.append(names[i])
-                dublicates_sales.append(sales[i])
-                dublicates_numbers.append(i)
-    unique_from_dublicates.append(dublicates[0])
+    if len(unique) > 0:
+
+        for i in range(len(names)):  # find all duplicate items in the list, save them in another lists like has been done with the unique items
+            for j in range(len(unique)):
+                if names[i] == unique[j]:
+                    break
+                elif names[i] != unique[j] and j == len(unique) - 1:
+                    dublicates.append(names[i])
+                    dublicates_sales.append(sales[i])
+                    dublicates_numbers.append(i)
+    else:
+        for i in range(len(items)):
+            dublicates.append(names[i])
+            dublicates_sales.append(sales[i])
+            dublicates_numbers.append(i)
+
+    if len(dublicates) > 1:
+        unique_from_dublicates.append(dublicates[0])
 
     for i in range(1,len(dublicates)):  # walkthrough the list of dublicates and find all unique elements, write them to the separate list
         for j in range(len(unique_from_dublicates)):
@@ -56,18 +71,16 @@ def ShopOLAP(N, items_input):
             elif dublicates[i] != unique_from_dublicates[j] and j == len(unique_from_dublicates) - 1:
                 unique_from_dublicates.append(dublicates[i])
 
-    for i in range(len(unique_from_dublicates)):
+    # print('уникальные среди дубликатов', unique_from_dublicates)
+
+    for i in range(len(unique_from_dublicates)):  # count the sum of sales for unique from dublicates
         sum_sales = 0
         for j in range(len(dublicates)):
             if unique_from_dublicates[i] == dublicates[j]:
                 sum_sales = sum_sales + int(dublicates_sales[j])
         unique_sales_from_dublicates.append(sum_sales)
-    final_items = []
-    final_sales = []
-    final_together = []
 
-    # gather the data to ungrouped lists
-    for i in range(len(unique)):
+    for i in range(len(unique)):  # gather the data to ungrouped lists
         final_items.append(unique[i])
         final_sales.append(unique_sales[i])
 
@@ -78,6 +91,11 @@ def ShopOLAP(N, items_input):
     for i in range(len(final_items)):
         final_together.append(final_items[i])
         final_together.append(final_sales[i])
+
+    if len(final_together) == 2:
+        standalone = []
+        standalone.append(str(final_together[0] + ' ' + str(final_together[1])))
+        return standalone
 
     for i in range(len(final_items)):  # create a string list
         buffer_string = ''
