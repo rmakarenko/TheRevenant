@@ -16,7 +16,7 @@ def BastShoe(command):
         current_state.append(current_string)
         undo_done = 0
 
-    elif command.split(' ')[0] == '2' and len(current_string) - int(user_input.split(' ')[1]) > 0:  # operation 2
+    elif command.split(' ')[0] == '2' and len(current_string) - int(command.split(' ')[1]) > 0:  # operation 2
         buffered_string = current_string
         current_string = ''
         for i in range(len(current_string) - int(command.split(' ')[1])):
