@@ -50,6 +50,8 @@ def BastShoe(command):
         current_string = current_state[current_position - 1]
         undo_done = undo_done - 1
 
+    elif command.split(' ')[0] == '5' and undo_done <= 0:  # operation 5, redo
+        return current_string
     else:
         return current_string
 
