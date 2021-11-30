@@ -73,5 +73,6 @@ def BastShoe(command):
 
         undo_done = undo_done - 1
         return current_string
+    
     else:
         return current_string
