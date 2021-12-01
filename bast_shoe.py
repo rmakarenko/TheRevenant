@@ -11,23 +11,25 @@ def BastShoe(command):
     global undo_done
 
     if command.split(' ')[0] == '1' and len(current_state) == 0:  # here in this block user input is handled and operations are performed
-        current_string = command.split(' ')[1]
-        current_position = 0
+        for i in range(1, len(command.split(' '))):
+            current_string = current_string + command.split(' ')[i]
         current_state.append(current_string)
+        current_position = 0
         undo_done = 0
         return current_string
 
     elif command.split(' ')[0] == '1':  # here in this block user input is handled and operations are performed
-        current_string = current_string + command.split(' ')[1]
-        current_position = current_position + 1
+        for i in range(1, len(command.split(' '))):
+            current_string = current_string + command.split(' ')[i]
         current_state.append(current_string)
+        current_position = current_position + 1
         undo_done = 0
         return current_string
 
     elif command.split(' ')[0] == '2' and len(current_string) - int(command.split(' ')[1]) > 0:  # operation 2
         buffered_string = current_string
         current_string = ''
-        for i in range(len(current_string) - int(command.split(' ')[1])):
+        for i in range(len(buffered_string) - int(command.split(' ')[1])):
             current_string = current_string + buffered_string[i]
         current_position = current_position + 1
         current_state.append(current_string)
@@ -73,6 +75,5 @@ def BastShoe(command):
 
         undo_done = undo_done - 1
         return current_string
-    
     else:
         return current_string
