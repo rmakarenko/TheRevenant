@@ -11,8 +11,8 @@ def SherlockValidString(s):
 
     unique = UniqueList(s)
     unique_amount = []
-    current_sublist = []
     current_list = []
+    delta_one = 0
 
     for i in range(len(unique)):  # put 0 for every unique element
         unique_amount.append(0)
@@ -25,9 +25,9 @@ def SherlockValidString(s):
     if len(unique_amount) == 1:
         return True
 
-    if len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] <= 1 and unique_amount[1] - unique_amount[0] >= -1:
+    if len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] <= 1 and unique_amount[0] - unique_amount[1] >= -1:
         return True
-    elif len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] > 1 or unique_amount[1] - unique_amount[0] < -1:
+    elif len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] > 1 or unique_amount[0] - unique_amount[1] < -1:
         return False
 
     unique_amount.sort(reverse=True)
@@ -37,21 +37,15 @@ def SherlockValidString(s):
     for i in range(len(unique_from_amounts)):  # in this block we will get the lists with unique amounts
         for j in range(len(unique_amount)):
             if unique_from_amounts[i] == unique_amount[j]:
-                current_sublist.append(unique_from_amounts[i])
-        current_list.append(current_sublist)
-        current_sublist = []
+                current_list.append(unique_from_amounts[i])
 
-    if len(current_list) > 2:
-        return False
-    elif len(current_list) == 1:
-        return True
-    elif len(current_list[0]) > 1 and len(current_list[1]) > 1:
-        return False
-    elif len(current_list[0]) == 1 and (current_list[0][0]) == 1:
-        return True
-    elif len(current_list[1]) == 1 and (current_list[1][0]) == 1:
-        return True
-    elif len(current_list[0]) == 1 and (current_list[0][0]) - 1 == current_list[1][0]:
-        return True
-    elif len(current_list[1]) == 1 and (current_list[1][0]) - 1 == current_list[0][0]:
+    current_list.sort(reverse=True)
+
+    for i in range(len(current_list) - 2):
+        if current_list[i] - current_list[i + 1] > 1:
+            return False
+        elif current_list[i] - current_list[i + 1] == 1:
+            delta_one = delta_one + 1
+
+    if delta_one < 2:
         return True
