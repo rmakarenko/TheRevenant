@@ -22,9 +22,9 @@ def SherlockValidString(s):
         return True
     if len(unique_amount) == 2 and (unique_amount[0] == 1 or unique_amount[1] == 1):  # len = 2 and all equal
         return True
-    if len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] <= 1 and unique_amount[0] - unique_amount[1] >= -1:
+    if len(unique_amount) == 2 and (unique_amount[0] - unique_amount[1] <= 1 and unique_amount[0] - unique_amount[1] >= -1):
         return True  # len = 2 and delta less or equal than 1
-    elif len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] > 1 or unique_amount[0] - unique_amount[1] < -1:
+    elif len(unique_amount) == 2 and (unique_amount[0] - unique_amount[1] > 1 or unique_amount[0] - unique_amount[1] < -1):
         return False # len = 2 and delta more than 1
     for i in range(len(unique_amount) - 2):
         if unique_amount[i] != unique_amount[i + 1]:
