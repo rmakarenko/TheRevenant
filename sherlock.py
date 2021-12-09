@@ -9,8 +9,6 @@ def UniqueList(s):
 def SherlockValidString(s):
     unique = UniqueList(s)
     unique_amount = []
-    current_list = []
-    delta_one = 0
     delta = 0
     for i in range(len(unique)):  # put 0 for every unique element
         unique_amount.append(0)
@@ -19,9 +17,10 @@ def SherlockValidString(s):
             if s[i] == unique[j]:
                 unique_amount[j] = unique_amount[j] + 1  # now we have the list with amounts of all unique elements
     unique_amount.sort(reverse=True)
+    print(unique_amount)
     if len(unique_amount) == 1:  # f len is 1 it is always true
         return True
-    if len(unique_amount) == 2 and unique_amount[0] == 1 or unique_amount[1] == 1:  # len = 2 and all equal
+    if len(unique_amount) == 2 and (unique_amount[0] == 1 or unique_amount[1] == 1):  # len = 2 and all equal
         return True
     if len(unique_amount) == 2 and unique_amount[0] - unique_amount[1] <= 1 and unique_amount[0] - unique_amount[1] >= -1:
         return True  # len = 2 and delta less or equal than 1
