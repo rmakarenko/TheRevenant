@@ -17,7 +17,6 @@ def SherlockValidString(s):
             if s[i] == unique[j]:
                 unique_amount[j] = unique_amount[j] + 1  # now we have the list with amounts of all unique elements
     unique_amount.sort(reverse=True)
-    print(unique_amount)
     if len(unique_amount) == 1:  # f len is 1 it is always true
         return True
     if len(unique_amount) == 2 and (unique_amount[0] == 1 or unique_amount[1] == 1):  # len = 2 and all equal
