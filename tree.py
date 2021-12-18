@@ -1,8 +1,7 @@
 matrix_listed = []
 matrix = []  # matrix plus size and with frame from 0
 
-def aging():  # - в "первый" (чётный) год все ветки стареют на один год, и все пустые клетки заполняются новыми корнями с возрастом 1 год (визуально всё заполнено символами "+");
-
+def aging():  
     for i in range(len(matrix) - 2):  # walkthrough the matrix
         for j in range(len(matrix[0]) - 2):
                 matrix[i + 1][j + 1] = matrix[i + 1][j + 1] + 1  # increasing numbers by 1
