@@ -27,5 +27,3 @@ def TransformTransform(A, N):
         return True
     else:
         return False
-
-print(TransformTransform([1,2,3,4,5,6], 6))
