@@ -1,5 +1,5 @@
 def maximum(massive, start, finish):
-    max = massive[0]
+    max = massive[start]
     for i in range(start, finish + 1):
         if massive[i] > max:
             max = massive[i]
@@ -7,8 +7,8 @@ def maximum(massive, start, finish):
 
 def Transform(A, N):
     B = []
-    for i in range(len(A) - 1):
-        for j in range(len(A) - 1 - i):
+    for i in range(len(A)):
+        for j in range(len(A) - i):
             k = i + j
             B.append(maximum(A, j, k))
     return B
