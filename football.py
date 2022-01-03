@@ -26,6 +26,9 @@ def Football(F, N):
 
     false_counter = positions_checker(F)[1]
     false_positions = positions_checker(F)[2]
+    
+    if positions_checker(F)[1] == 0:  # if list is initially sorted - return false
+        return False
 
     if false_counter == 2:  # in case, if there are only 2 False in right positions - change that elements
         F[false_positions[0]], F[false_positions[1]] = F[false_positions[1]], F[false_positions[0]]
@@ -55,3 +58,4 @@ def Football(F, N):
         return True
 
     return False
+
