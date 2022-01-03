@@ -3,30 +3,24 @@ def positions_checker(F):
     right_positions = []  # walkthrough the massive and find the elements, that are not sorted, create the massive with booleans
     false_counter = 0
     false_positions = []
+    F_sorted = F[:]
+    F_sorted.sort()
 
-    for i in range(len(F) - 1):  # handle all elements, except last
-        if F[i] < F[i + 1]:
+    for i in range(len(F)):
+        if F[i] == F_sorted[i]:
             right_positions.append(True)
         else:
             right_positions.append(False)
             false_positions.append(i)
             false_counter = false_counter + 1
 
-    if F[len(F) - 1] > F[len(F) - 2]:  # handling the last element
-        right_positions.append(True)
-    else:
-        right_positions.append(False)
-        false_positions.append(len(F) - 1)
-        false_counter = false_counter + 1
-
     return right_positions, false_counter, false_positions
-
 
 def Football(F, N):
 
     false_counter = positions_checker(F)[1]
     false_positions = positions_checker(F)[2]
-    
+
     if positions_checker(F)[1] == 0:  # if list is initially sorted - return false
         return False
 
@@ -58,4 +52,3 @@ def Football(F, N):
         return True
 
     return False
-
