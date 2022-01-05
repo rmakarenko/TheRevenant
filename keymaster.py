@@ -7,7 +7,7 @@ def Keymaker(k):
         doors.append(0)
 
     for j in range(k):
-        for i in range(0, len(doors), 1 + j):
+        for i in range(j, len(doors), 1 + j):
             if doors[i] == 1:
                 doors[i] = 0
             else:
